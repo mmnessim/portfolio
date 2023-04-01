@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { Landing } from './components/landing/landing';
 import { AboutMe } from './components/about-me/AboutMe';
+import { APIDemo } from './components/APIdemo/apiDemo';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: '/about',
         element: <AboutMe />
+      },
+      {
+        path: '/apidemo',
+        element: <APIDemo />
       }
     ]
   }
