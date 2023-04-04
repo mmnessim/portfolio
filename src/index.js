@@ -9,6 +9,7 @@ import {
 import { Landing } from './components/landing/landing';
 import { AboutMe } from './components/about-me/AboutMe';
 import { APIDemo } from './components/APIdemo/apiDemo';
+import { DisplaySQL } from './components/APIdemo/getapi';
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,13 @@ const router = createBrowserRouter([
       },
       {
         path: '/apidemo',
-        element: <APIDemo />
+        element: <APIDemo />,
+        children: [
+          {
+            path: '/apidemo/get',
+            element: <DisplaySQL />
+          }
+        ]
       }
     ]
   }
