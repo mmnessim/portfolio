@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { GetAPI } from './getapi';
 
 export function PostAPI() {
     const [query, setQuery] = useState();
@@ -13,7 +14,8 @@ export function PostAPI() {
     
 
     useEffect(() => {
-        fetch('http://localhost:3001/post', {
+        if (pName) {
+            fetch('http://localhost:3001/post', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -28,7 +30,11 @@ export function PostAPI() {
                 console.log(response)
                 return response.json()
             })
-    },[query])
+            .catch((err) => {
+                console.log(err)
+            })
+    };
+},[query])
 
     const handleName = (e) => {
         setpName(e.target.value);
