@@ -1,6 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import { GetAPI } from './getapi';
-
 export function PostAPI() {
     const [query, setQuery] = useState();
     const handleQuery = () => {
@@ -27,7 +25,7 @@ export function PostAPI() {
             })
         })
             .then((response) => {
-                console.log(response)
+                console.log(response.body)
                 return response.json()
             })
             .catch((err) => {
@@ -51,14 +49,16 @@ export function PostAPI() {
     return(
         //Need to make proper HTML form with submit
         <div>
-            <button onClick={handleQuery}>Test {query}</button>
-            <br />
-            <label for='name'>Name: </label>
-            <input type='text' id='name' name='name' placeholder='First and last name' className='form-control' onChange={handleName}></input>
-            <label for='age'>Age: </label>
-            <input type='number' id='age' name='age' placeholder='0' className='form-control' onChange={handleAge}></input>
-            <label for='instrument'>Instrument: </label>
-            <input type='text' id='instrument' name='instrument' placeholder='Enter instrument' className='form-control' onChange={handleInstr}></input>
+            <h3>Add a student to the database</h3>
+            <form>
+                <label for='name'>Name: </label>
+                <input type='text' id='name' name='name' placeholder='First and last name' className='form-control' onChange={handleName}></input>
+                <label for='age'>Age: </label>
+                <input type='number' id='age' name='age' placeholder='0' className='form-control' onChange={handleAge}></input>
+                <label for='instrument'>Instrument: </label>
+                <input type='text' id='instrument' name='instrument' placeholder='Enter instrument' className='form-control' onChange={handleInstr}></input>
+                <input type='submit' onClick={handleQuery} className='btn'></input>
+            </form>
         </div>
     )
 }

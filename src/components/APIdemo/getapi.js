@@ -17,16 +17,13 @@ export function DisplaySQL() {
         display = []
         if (data) {;
         for (let i = 0; i < data.length; i++) {
-            display.push(<span>{data[i].name} {data[i].instrument} {data[i].age}, </span>)
+            display.push(<div><span>{data[i].name}, {data[i].instrument}, {data[i].age} </span> <br /> </div>)
         }} 
-        console.log(display)
     }
     handleDisplay();
 
     return (
         <div>
-            <p>Hello</p>
-            <button onClick={handleDisplay}>Click me</button>
             <br />
             {display}
         </div>
