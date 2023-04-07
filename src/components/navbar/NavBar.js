@@ -7,7 +7,7 @@ export function NavBar() {
             <Link to={'/'} className='btn col-sm navlink'>Home</Link>
             <Link to={'/about'} className='btn col-sm navlink'>About Me</Link>
             <Link to={'/apidemo'} className="btn col-sm navlink">API Demo</Link>
-            <span className="btn col-sm navlink">Writing Samples</span>
+            <Link to={'/writing'} className="btn col-sm navlink">Writing Samples</Link>
             <span className="btn col-sm navlink">Music</span>
         </div>
     )
