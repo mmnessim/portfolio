@@ -20,6 +20,7 @@ export function APIDemo() {
             <PostAPI />
             <button onClick={handleClick} className='btn'>Display students</button>
             {display}
+            <JWPepperSearch />
         </div>
     )
 }

@@ -43,6 +43,7 @@ highest pitch of the phrase and is approached by a nearly three octave leap. Thi
 serialism appears in Kurtág's other early works in a less strict and pervasive way than the works
 of Webern or other serial composers.
             </p>
+            
         </div>
     )
 }

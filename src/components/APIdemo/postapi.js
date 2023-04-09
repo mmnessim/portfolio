@@ -13,7 +13,7 @@ export function PostAPI() {
 
     useEffect(() => {
         if (pName) {
-            fetch('http://localhost:3001/post', {
+            fetch('http://localhost:3001/psql/post', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

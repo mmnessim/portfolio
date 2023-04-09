@@ -6,7 +6,7 @@ export function JWPepperSearch() {
     //Fetch data
     useEffect(() => {
         //Early stages, not set up with buttons yet
-        fetch('https://mnessim-test-app.herokuapp.com/level/easy')
+        fetch('http://localhost:3001/scores/level/easy')
             .then((res) => {
                 if (!res.ok) {
                     throw new Error('Request failed');
