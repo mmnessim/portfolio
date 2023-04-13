@@ -4,7 +4,7 @@ export function DisplaySQL() {
     const [data, setData] = useState();
     let display = [];
     useEffect(() => {
-        fetch('http://localhost:3001/psql/all')
+        fetch('http://localhost:8080/mongo/all')
             .then((res) => {
                 return res.json()
             })

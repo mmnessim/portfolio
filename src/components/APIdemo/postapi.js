@@ -10,10 +10,9 @@ export function PostAPI() {
     const [age, setAge] = useState();
     const [instr, setInstr] = useState();
     
-
     useEffect(() => {
         if (pName) {
-            fetch('http://localhost:3001/psql/post', {
+            fetch('http://localhost:8080/testpost', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -32,7 +31,7 @@ export function PostAPI() {
                 console.log(err)
             })
     };
-},[query])
+}, [query])
 
     const handleName = (e) => {
         setpName(e.target.value);
@@ -59,6 +58,7 @@ export function PostAPI() {
                 <input type='text' id='instrument' name='instrument' placeholder='Enter instrument' className='form-control' onChange={handleInstr}></input>
                 <input type='submit' onClick={handleQuery} className='btn'></input>
             </form>
+            <button onClick={handleQuery}>test</button>
         </div>
     )
 }
