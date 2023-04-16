@@ -17,6 +17,7 @@ export function Input(props) {
                 setError('Invalid word')
             } else if (input.length === 5 && words.includes(input)) {
                 setGuess(input)
+                setError()
             }
         }
         else {
