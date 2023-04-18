@@ -11,6 +11,7 @@ import { AboutMe } from './components/about-me/AboutMe';
 import { APIDemo } from './components/APIdemo/apiDemo';
 import { DisplaySQL } from './components/APIdemo/getapi';
 import { WritingSamples } from './components/writingSamples/writingSamples';
+import { WordleContainer } from './components/wordleClone/wordleContainer';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: '/writing',
         element: <WritingSamples />
+      },
+      {
+        path: '/wordle',
+        element: <WordleContainer />
       }
     ]
   }
