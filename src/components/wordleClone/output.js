@@ -34,8 +34,10 @@ export function Output(props) {
         )
         setDisplay((prev) => [newDisplay, ...prev]);
         incrementer();
-        if (props.win) {
+        if (props.win && counter < 5) {
             setWin(<h1>You win!</h1>)
+        } else if (counter >= 5) {
+            setWin(<h1>The word was {props.word}</h1>)
         }
     }
 }
@@ -43,9 +45,9 @@ export function Output(props) {
     return(
         <div>
             {win}
-            {display}
-            <br />
             <button onClick={handleDisplay} className="btn">Guess</button>
+            <br />
+            {display}
             <br />
         </div>
     )
