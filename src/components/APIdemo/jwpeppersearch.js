@@ -7,7 +7,7 @@ export function JWPepperSearch(props) {
     const query = props.level;
     //Fetch data each time query changes
     useEffect(() => {
-        fetch(`https://jwpepper-server.onrender.com/scores/level/${query}`)
+        fetch(`https://profile-backend.herokuapp.com/scores/level/${query}`)
             .then((res) => {
                 if (!res.ok) {
                     throw new Error('Request failed');
@@ -17,7 +17,7 @@ export function JWPepperSearch(props) {
             .then((actualData) => {
                 setData(actualData);
             })
-    },[query])
+    },[props.level])
     
     let displayArray = [];
     console.log(data[0])

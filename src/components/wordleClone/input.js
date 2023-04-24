@@ -42,7 +42,7 @@ export function Input(props) {
             word={props.word} 
             guess={guess} 
             giveup={giveup} />
-            <button onClick={handleGiveUp}>Give up?</button>
+            <button onClick={handleGiveUp} className="btn">Give up?</button>
             {giveupMessage}
         </div>
     )
