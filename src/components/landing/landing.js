@@ -1,5 +1,4 @@
 import React from "react";
-import { WordleContainer } from "../wordleClone/wordleContainer";
 
 export function Landing() {
     return(
