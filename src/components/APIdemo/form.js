@@ -1,19 +1,21 @@
 import React, {useState} from "react";
 
 export function Form() {
-    const [name, setName] = useState();
+    const [firstName, setFirstName] = useState();
+    const [lastName, setLastName] = useState();
     const [email, setEmail] = useState();
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        fetch('http://localhost:3001/database/form/post', {
+        //e.preventDefault();
+        fetch('http://localhost:3001/database/newuser', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                'name': name,
-                'email': email
+                first_name: firstName,
+                last_name: lastName,
+                email: email
             })
         })
             .then((response) => {
@@ -24,18 +26,23 @@ export function Form() {
             })
     }
 
-    const handleName = (e) => {
-        setName(e.target.value)
+    const handleFirstName = (e) => {
+        setFirstName(e.target.value)
     }
-    const handleEmail = (e) => {
+    const handleLastName = (e) => {
+        setLastName(e.target.value)
+    }
+     const handleEmail = (e) => {
         setEmail(e.target.value)
     }
     return(
     <div>
         <form onSubmit={handleSubmit}>
-            <input type='text' onChange={handleName} placeholder="name" required></input>
+            <input type='text' onChange={handleFirstName} placeholder="First Name" required></input>
             <br />
-            <input type='email' onChange={handleEmail} placeholder="email" required></input>
+            <input type='text' onChange={handleLastName} placeholder="Last Name" required></input>
+            <br />
+            <input type='email' onChange={handleEmail} placeholder="e-mail" required></input>
             <br />
             <input type='submit'></input>
         </form>
