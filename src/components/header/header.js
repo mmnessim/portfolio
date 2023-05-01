@@ -2,7 +2,7 @@ import React from "react";
 
 export function Header() {
     return (
-        <div className="container-fluid">
+        <div className="container-fluid row">
             <h1 className="display-3 fw-bold">Mounir Nessim</h1>
             <h2 className="display-6">Educator, Programmer, Musician</h2>
         </div>
