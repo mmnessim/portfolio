@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { Login } from "./login";
 
 export function Form() {
     const [firstName, setFirstName] = useState();
@@ -38,6 +39,7 @@ export function Form() {
     return(
     <div>
         <form onSubmit={handleSubmit}>
+            <Login />
             <input type='text' onChange={handleFirstName} placeholder="First Name" required></input>
             <br />
             <input type='text' onChange={handleLastName} placeholder="Last Name" required></input>
