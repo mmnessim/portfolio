@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { LevelSelector } from "./levelSelector";
 
 export function Login() {
     const [email, setEmail] = useState();
@@ -35,7 +36,7 @@ export function Login() {
             })
             .then(() => {
                 if (data.authenticated === true) {
-                    setDisplay(<h3>Welcome back!</h3>);
+                    setDisplay();
                 }
             })
     }

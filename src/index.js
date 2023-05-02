@@ -12,6 +12,7 @@ import { APIDemo } from './components/APIdemo/apiDemo';
 import { DisplaySQL } from './components/APIdemo/getapi';
 import { WritingSamples } from './components/writingSamples/writingSamples';
 import { WordleContainer } from './components/wordleClone/wordleContainer';
+import { SubNav } from './components/navbar/subNav';
 
 const router = createBrowserRouter([
   {
@@ -27,22 +28,28 @@ const router = createBrowserRouter([
         element: <AboutMe />
       },
       {
-        path: '/apidemo',
-        element: <APIDemo />,
+        path: '/coding',
+        element: <SubNav />,
         children: [
           {
-            path: '/apidemo/get',
-            element: <DisplaySQL />
+           path: '/coding/apidemo',
+           element: <APIDemo />,
+           children: [
+            {
+              path: '/coding/apidemo/get',
+              element: <DisplaySQL />
+            }
+           ] 
+          },
+          {
+            path: '/coding/wordle',
+            element: <WordleContainer />
           }
         ]
       },
       {
         path: '/writing',
         element: <WritingSamples />
-      },
-      {
-        path: '/wordle',
-        element: <WordleContainer />
       }
     ]
   }

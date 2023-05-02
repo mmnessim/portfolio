@@ -2,7 +2,7 @@ import React from "react";
 
 export function Academic() {
     return(
-        <div className="container">
+        <div className="container writing-sample">
             <h3>Academic Writing</h3>
             <h4>Samples from my 2020 dissertation.</h4>
             <h5>Abstract</h5>
@@ -43,7 +43,7 @@ highest pitch of the phrase and is approached by a nearly three octave leap. Thi
 serialism appears in Kurtág's other early works in a less strict and pervasive way than the works
 of Webern or other serial composers.
             </p>
-            
+            <br />
         </div>
     )
 }
