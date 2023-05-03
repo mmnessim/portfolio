@@ -1,5 +1,4 @@
-import React, {useState} from "react";
-import { LevelSelector } from "./levelSelector";
+import React, {useEffect, useState} from "react";
 
 export function Login() {
     const [email, setEmail] = useState();
@@ -32,21 +31,35 @@ export function Login() {
                 return res.json();
             })
             .then((actualData) => {
+                console.log(actualData.authenticated)
                 setData(actualData)
-            })
-            .then(() => {
-                if (data.authenticated === true) {
-                    setDisplay();
-                }
             })
     }
 
+    useEffect(() => {
+        if (data) {
+            console.log(data.authenticated)
+        }
+    }, [data])
+    if (data && data.authenticated) {
+        return (
+            <div>
+                <h3>Welcome back!</h3>
+            </div>
+        )
+    }
     return(
         <div>
-                <input type="email" onChange={handleEmail}></input>
-                <input type="password" onChange={handlePassword}></input>
-                <button onClick={handleSubmit}>Submit</button>
-                {display}
+            <h3>Login</h3>
+            <form className="login-form" onSubmit={handleSubmit}>
+                <label for="email">Enter your email: </label>
+                <input type="email" onChange={handleEmail} id="email"></input> <br />
+                <label for="password">Enter your password: </label>
+                <input type="password" onChange={handlePassword} id="password"></input> <br />
+                <input type="submit"></input>
+                <button onClick={handleSubmit}>Login</button>
+            </form>
+            {display}
         </div>
     )
 }
