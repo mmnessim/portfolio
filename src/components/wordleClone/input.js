@@ -10,7 +10,7 @@ export function Input(props) {
     const [giveupMessage, setGiveupMessage] = useState();
 
     const handleInput = (e) => {
-        setInput(e.target.value);
+        setInput(e.target.value.toLowerCase());
     }
 
     useEffect(() => {

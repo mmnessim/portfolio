@@ -10,17 +10,17 @@ export function WordleContainer() {
 
     const wordArray = word.split('');
     console.log(wordArray)
- /*
+ 
     function refreshPage() {
         window.location.reload();
     }
-    */
 
     return(
         <div className='container content'>
             <h1>Wordle Clone</h1>
             <h4>Guess the five letter word!</h4>
             <p>Green means you have the right letter in the right place. Yellow means you have the right letter, but in the wrong place! You have six guesses to get the word! The word will reset if you refresh the page! Also, the word list I am using contains some real oddballs</p>
+            <button onClick={refreshPage} className='btn'>Refresh for a new word</button>
             <Input 
             word={wordArray}
             giveup={word}
