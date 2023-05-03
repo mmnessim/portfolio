@@ -1,6 +1,6 @@
 
 const defaultState = {
-    authenticated: false,
+    authenticated: null,
     user: "Guest",
 }
 
@@ -10,6 +10,9 @@ export const ERROR = 'ERROR';
 export function loginReducer(state = defaultState, action) {
     switch (action.type) {
         case 'LOGIN': 
+            return action.payload
+            break;
+        case 'INCORRECT':
             return action.payload
             break;
         case 'ERROR':

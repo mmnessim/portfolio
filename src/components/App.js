@@ -9,7 +9,6 @@ export function App(props) {
         <div id="app-container" className="text-center">
             <Header />
             <NavBar />
-            Welcome {props.store.user}
             <Outlet />
             <Footer />
         </div>

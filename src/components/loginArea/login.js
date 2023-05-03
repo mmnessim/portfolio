@@ -5,7 +5,6 @@ export function Login() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [data, setData] = useState();
-    const [display, setDisplay] = useState();
 
     function handleEmail(e) {
         setEmail(e.target.value);
@@ -42,14 +41,20 @@ export function Login() {
             console.log(data.authenticated)
         }
     }, [data])
-    if (data && data.authenticated) {
-        store.dispatch({type: "LOGIN", payload: {authenticated: true, user: data.user_id}})
+
+    if (data && data.authenticated === true) {
+        store.dispatch({type: "LOGIN", payload: {authenticated: true, user: data.username}})
         return (
             <div>
                 <h3>Welcome back!</h3>
                 {store.getState().user}
             </div>
         )
+    } else if (data && data.authenticated === false) {
+        store.dispatch({type: "INCORRECT", payload: {authenticated: false, user: 'Guest'}})
+        return(<div>
+            <h3>Incorrect username or password</h3>
+        </div>)
     } else {
     return(
         <div>
@@ -62,7 +67,6 @@ export function Login() {
                 <input type="submit"></input>
                 <button onClick={handleSubmit}>Login</button>
             </form>
-            {display}
         </div>
     )
 }
