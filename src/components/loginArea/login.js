@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { store } from "../..";
+import { Link } from "react-router-dom";
 
 export function Login() {
     const [email, setEmail] = useState();
@@ -53,9 +54,22 @@ export function Login() {
         )
     } else if (data && data.authenticated === false) {
         store.dispatch({type: "INCORRECT", payload: {authenticated: false, user: 'Guest'}})
-        return(<div>
-            <h3>Incorrect username or password</h3>
-        </div>)
+        return(
+            <div>
+                <h4>Incorrect email or password</h4>
+                <h3>Login</h3>
+                <form className="login-form" onSubmit={handleSubmit}>
+                    <label for="email">Enter your email: </label>
+                    <input type="email" onChange={handleEmail} id="email"></input> <br />
+                    <label for="password">Enter your password: </label>
+                    <input type="password" onChange={handlePassword} id="password"></input> <br />
+                    <input type="submit"></input>
+                    <button onClick={handleSubmit}>Login</button>
+                </form>
+                <Link to={'/create-account'} className="btn navlink">Create an account</Link>
+        </div>
+
+        )
     } else {
     return(
         <div>
@@ -68,6 +82,7 @@ export function Login() {
                 <input type="submit"></input>
                 <button onClick={handleSubmit}>Login</button>
             </form>
+            <Link to={'/create-account'} className="btn navlink">Create an account</Link>
         </div>
     )
 }

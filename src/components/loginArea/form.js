@@ -1,13 +1,15 @@
 import React, {useState} from "react";
-import { Login } from "../loginArea/login";
+import { Link } from "react-router-dom";
 
 export function Form() {
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
     const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const [message, setMessage] = useState();
 
     const handleSubmit = (e) => {
-        //e.preventDefault();
+        e.preventDefault();
         fetch('http://localhost:3001/database/newuser', {
             method: 'post',
             headers: {
@@ -16,11 +18,15 @@ export function Form() {
             body: JSON.stringify({
                 first_name: firstName,
                 last_name: lastName,
-                email: email
+                email: email,
+                password: password
             })
         })
             .then((response) => {
                 console.log(response)
+                if (response.ok) {
+                    setMessage(<div><p>Account created!</p> <Link to={'/coding/login'} className="btn navlink">Login</Link></div>)
+                }
             })
             .catch((err) => {
                 console.log(err)
@@ -33,11 +39,15 @@ export function Form() {
     const handleLastName = (e) => {
         setLastName(e.target.value)
     }
-     const handleEmail = (e) => {
+    const handleEmail = (e) => {
         setEmail(e.target.value)
+    }
+    const handlePassword = (e) => {
+        setPassword(e.target.value)
     }
     return(
     <div>
+        <p>Create an account</p>
         <form onSubmit={handleSubmit}>
             <input type='text' onChange={handleFirstName} placeholder="First Name" required></input>
             <br />
@@ -45,7 +55,10 @@ export function Form() {
             <br />
             <input type='email' onChange={handleEmail} placeholder="e-mail" required></input>
             <br />
+            <input type="password" onChange={handlePassword} placeholder="password"></input>
+            <br />
             <input type='submit'></input>
         </form>
+        {message}
     </div>)
 }

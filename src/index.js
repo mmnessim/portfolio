@@ -16,6 +16,7 @@ import { SubNav } from './components/navbar/subNav';
 import { Login } from './components/loginArea/login';
 import { createStore } from 'redux';
 import { loginReducer } from './reducer';
+import { Form } from './components/loginArea/form';
 
 export const store = createStore(loginReducer);
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
       {
         path: '/writing',
         element: <WritingSamples />
+      },
+      {
+        path: '/create-account',
+        element: <Form />
       }
     ]
   }
