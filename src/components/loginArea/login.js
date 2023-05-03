@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { store } from "../..";
 
 export function Login() {
     const [email, setEmail] = useState();
@@ -31,7 +32,7 @@ export function Login() {
                 return res.json();
             })
             .then((actualData) => {
-                console.log(actualData.authenticated)
+                console.log(actualData)
                 setData(actualData)
             })
     }
@@ -42,12 +43,14 @@ export function Login() {
         }
     }, [data])
     if (data && data.authenticated) {
+        store.dispatch({type: "LOGIN", payload: {authenticated: true, user: data.user_id}})
         return (
             <div>
                 <h3>Welcome back!</h3>
+                {store.getState().user}
             </div>
         )
-    }
+    } else {
     return(
         <div>
             <h3>Login</h3>
@@ -62,4 +65,5 @@ export function Login() {
             {display}
         </div>
     )
+}
 }

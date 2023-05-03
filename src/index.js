@@ -14,11 +14,17 @@ import { WritingSamples } from './components/writingSamples/writingSamples';
 import { WordleContainer } from './components/wordleClone/wordleContainer';
 import { SubNav } from './components/navbar/subNav';
 import { Login } from './components/loginArea/login';
+import { createStore } from 'redux';
+import { loginReducer } from './reducer';
+
+export const store = createStore(loginReducer);
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <App 
+    store={store.getState()} />,
     children: [
       {
         path: '/',
@@ -60,10 +66,9 @@ const router = createBrowserRouter([
   }
 ])
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={router} store={store}/>
   </React.StrictMode>
 );
 

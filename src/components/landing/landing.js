@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Landing() {
+export function Landing(props) {
     return(
         <div className="container">
             <h3>Web Development Portfolio and Demo</h3>
