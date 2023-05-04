@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { store } from "../..";
 import { Link } from "react-router-dom";
+import { MemberContainer } from "../members/memberContainer";
 
 export function Login() {
     const [email, setEmail] = useState();
@@ -18,7 +19,7 @@ export function Login() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch('http://localhost:3001/database/login', {
+        fetch('https://profile-backend.herokuapp.com/database/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -50,6 +51,7 @@ export function Login() {
             <div>
                 <h3>Welcome back!</h3>
                 {store.getState().user}
+                <MemberContainer />
             </div>
         )
     } else if (data && data.authenticated === false) {
@@ -69,6 +71,10 @@ export function Login() {
                 <Link to={'/create-account'} className="btn navlink">Create an account</Link>
         </div>
 
+        )
+    } else if (store.getState().authenticated === true) {
+        return (
+            <MemberContainer />
         )
     } else {
     return(

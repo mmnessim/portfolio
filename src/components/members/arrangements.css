@@ -1,0 +1,12 @@
+.pdf {
+    text-decoration: none;
+    color: rgb(62, 62, 62);
+}
+
+.pdf:hover {
+    text-decoration: underline;
+}
+
+.arr-list {
+    list-style-type: none;
+}

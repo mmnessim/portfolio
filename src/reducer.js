@@ -1,5 +1,4 @@
-
-const defaultState = {
+export const defaultState = {
     authenticated: null,
     user: "Guest",
 }
