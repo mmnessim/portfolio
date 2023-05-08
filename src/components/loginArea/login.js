@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import { store } from "../..";
 import { Link } from "react-router-dom";
 import { MemberContainer } from "../members/memberContainer";
@@ -6,8 +6,8 @@ import { MemberContainer } from "../members/memberContainer";
 export function Login() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-    const [data, setData] = useState();
-
+    const [error, setError] = useState();
+    const state = store.getState();
 
     function handleEmail(e) {
         setEmail(e.target.value);
@@ -19,7 +19,7 @@ export function Login() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch('https://profile-backend.herokuapp.com/database/login', {
+        fetch('http://localhost:3001/database/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,30 +35,15 @@ export function Login() {
             })
             .then((actualData) => {
                 console.log(actualData)
-                setData(actualData)
+                setError(actualData.message);
+                store.dispatch({type: "LOGIN", payload: {authenticated: actualData.authenticated, user: actualData.username, email: email} })
             })
     }
 
-    useEffect(() => {
-        if (data) {
-            console.log(data.authenticated)
-        }
-    }, [data])
-
-    if (data && data.authenticated === true) {
-        store.dispatch({type: "LOGIN", payload: {authenticated: true, user: data.username}})
-        return (
-            <div>
-                <h3>Welcome back!</h3>
-                {store.getState().user}
-                <MemberContainer />
-            </div>
-        )
-    } else if (data && data.authenticated === false) {
-        store.dispatch({type: "INCORRECT", payload: {authenticated: false, user: 'Guest'}})
+    if (state.authenticated !== true) {
         return(
             <div>
-                <h4>Incorrect email or password</h4>
+                {error}
                 <h3>Login</h3>
                 <form className="login-form" onSubmit={handleSubmit}>
                     <label for="email">Enter your email: </label>
@@ -69,27 +54,11 @@ export function Login() {
                     <button onClick={handleSubmit}>Login</button>
                 </form>
                 <Link to={'/create-account'} className="btn navlink">Create an account</Link>
-        </div>
-
+            </div>
         )
-    } else if (store.getState().authenticated === true) {
+    } else if (state.authenticated === true) {
         return (
             <MemberContainer />
         )
-    } else {
-    return(
-        <div>
-            <h3>Login</h3>
-            <form className="login-form" onSubmit={handleSubmit}>
-                <label for="email">Enter your email: </label>
-                <input type="email" onChange={handleEmail} id="email"></input> <br />
-                <label for="password">Enter your password: </label>
-                <input type="password" onChange={handlePassword} id="password"></input> <br />
-                <input type="submit"></input>
-                <button onClick={handleSubmit}>Login</button>
-            </form>
-            <Link to={'/create-account'} className="btn navlink">Create an account</Link>
-        </div>
-    )
-}
+    }
 }

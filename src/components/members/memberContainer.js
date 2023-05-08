@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import { Arrangements } from "./arrangements";
 
 export function MemberContainer() {
+    const state = store.getState();
     
-    if (store.getState().authenticated !== true) {
+    if (state.authenticated !== true) {
         return (
             <div>
                 <p>You must sign in to access this page</p>
