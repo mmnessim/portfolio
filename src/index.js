@@ -17,6 +17,7 @@ import { Login } from './components/loginArea/login';
 import { createStore } from 'redux';
 import { loginReducer } from './reducer';
 import { Form } from './components/loginArea/form';
+import { MemberContainer } from './components/members/memberContainer';
 
 export const store = createStore(loginReducer);
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
           {
             path: '/coding/login',
             element: <Login />
+          },
+          {
+            path: '/coding/members',
+            element: <MemberContainer />
           }
         ]
       },

@@ -28,3 +28,8 @@ code {
 .writing-sample {
   overflow-y: auto;
 }
+
+.nest-link {
+  text-decoration: none;
+  color:rgb(2, 2, 71);
+}

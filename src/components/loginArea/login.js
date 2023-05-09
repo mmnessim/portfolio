@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { store } from "../..";
 import { Link } from "react-router-dom";
 import { MemberContainer } from "../members/memberContainer";
@@ -7,7 +7,7 @@ export function Login() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [error, setError] = useState();
-    const state = store.getState();
+    const [login, setLogin] = useState();
 
     function handleEmail(e) {
         setEmail(e.target.value);
@@ -36,11 +36,11 @@ export function Login() {
             .then((actualData) => {
                 console.log(actualData)
                 setError(actualData.message);
+                setLogin(actualData.authenticated);
                 store.dispatch({type: "LOGIN", payload: {authenticated: actualData.authenticated, user: actualData.username, email: email} })
             })
     }
-
-    if (state.authenticated !== true) {
+        if (!login) {
         return(
             <div>
                 {error}
@@ -50,15 +50,15 @@ export function Login() {
                     <input type="email" onChange={handleEmail} id="email"></input> <br />
                     <label for="password">Enter your password: </label>
                     <input type="password" onChange={handlePassword} id="password"></input> <br />
-                    <input type="submit"></input>
-                    <button onClick={handleSubmit}>Login</button>
+                    <button onClick={handleSubmit} className="btn navlink">Log In</button>
                 </form>
                 <Link to={'/create-account'} className="btn navlink">Create an account</Link>
             </div>
-        )
-    } else if (state.authenticated === true) {
-        return (
-            <MemberContainer />
-        )
-    }
+        )} else if (login === true) {
+            return (
+                <div>
+                    <MemberContainer />
+                </div>
+            )
+        }
 }
