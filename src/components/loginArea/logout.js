@@ -4,10 +4,30 @@ import { store } from "../..";
 export function Logout() {
     const state = store.getState();
 
-    if (state.authenticated === true) {
+    const handleLogout = (e) => {
+        fetch('http://localhost:3001/database/logout', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'email': state.email,
+        })
+    })
+        .then((response) => {
+            return response.json()
+        })
+        .then((actualData) => {
+            console.log(actualData);
+            store.dispatch({type: "LOGOUT", action: {authenticated: null, user: "Guest"}})
+        })
+        window.location.reload();
+    }
+
+    if (store.getState().authenticated === true) {
     return(
         <div>
-            <button className="btn navlink">Log Out</button>
+            <button className="btn navlink" onClick={handleLogout}>Log Out</button>
         </div>
     )}
 }

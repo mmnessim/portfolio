@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { store } from "../..";
 import { Link } from "react-router-dom";
 import { MemberContainer } from "../members/memberContainer";
+import { Logout } from "./logout";
 
 export function Login() {
     const [email, setEmail] = useState();
@@ -37,12 +38,14 @@ export function Login() {
                 console.log(actualData)
                 setError(actualData.message);
                 setLogin(actualData.authenticated);
-                store.dispatch({type: "LOGIN", payload: {authenticated: actualData.authenticated, user: actualData.username, email: email} })
+                store.dispatch({type: "LOGIN", payload: {authenticated: actualData.authenticated, user: actualData.username, email: email}})
             })
     }
-        if (!login) {
+ 
+        if (!store.getState().authenticated) {
         return(
-            <div>
+            <div className="container">
+                <p>To access some more of my coding projects, musical arrangements, and more, you can sign in or create an account. Your account information will be saved and stored in my database. To ensure password security, your password will be hashed and salted with bcrypt and will not be stored on the databse as plaintext. For the most security, I recommend not using a password that you use for any other site. If you want to see the "Member's Area" without creating an account, you can sign in with guest@gmail.com and the password "guest"</p>
                 {error}
                 <h3>Login</h3>
                 <form className="login-form" onSubmit={handleSubmit}>
@@ -54,10 +57,11 @@ export function Login() {
                 </form>
                 <Link to={'/create-account'} className="btn navlink">Create an account</Link>
             </div>
-        )} else if (login === true) {
+        )} else if (store.getState().authenticated === true && login) {
             return (
                 <div>
                     <MemberContainer />
+                    <Logout />
                 </div>
             )
         }

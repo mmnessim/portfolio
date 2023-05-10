@@ -17,6 +17,9 @@ export function loginReducer(state = defaultState, action) {
         case 'ERROR':
             return state
             break;
+        case 'LOGOUT':
+            return action.payload
+            break;
         default: 
             return state
             break;
