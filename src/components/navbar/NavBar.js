@@ -8,7 +8,7 @@ export function NavBar() {
             <Link to={'/about'} className='btn col-sm navlink'>About Me</Link>
             <Link to={'/coding'} className="btn col-sm navlink">Coding Examples</Link>
             <Link to={'/writing'} className="btn col-sm navlink">Writing Samples</Link>
-            <span className="btn col-sm navlink">Music</span>
+            <Link to={'/music'} className="btn col-sm navlink">Music</Link>
         </div>
     )
 }
