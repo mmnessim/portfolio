@@ -20,7 +20,7 @@ export function Login() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch('http://localhost:3001/database/login', {
+        fetch('https://profile-backend.herokuapp.com/database/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

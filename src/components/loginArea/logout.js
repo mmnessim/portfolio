@@ -5,7 +5,7 @@ export function Logout() {
     const state = store.getState();
 
     const handleLogout = (e) => {
-        fetch('http://localhost:3001/database/logout', {
+        fetch('https://profile-backend.herokuapp.com/database/logout', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

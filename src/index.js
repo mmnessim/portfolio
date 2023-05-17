@@ -9,7 +9,6 @@ import {
 import { Landing } from './components/landing/landing';
 import { AboutMe } from './components/about-me/AboutMe';
 import { APIDemo } from './components/APIdemo/apiDemo';
-import { DisplaySQL } from './components/APIdemo/getapi';
 import { WritingSamples } from './components/writingSamples/writingSamples';
 import { WordleContainer } from './components/wordleClone/wordleContainer';
 import { SubNav } from './components/navbar/subNav';
@@ -44,12 +43,6 @@ const router = createBrowserRouter([
           {
            path: '/coding/apidemo',
            element: <APIDemo />,
-           children: [
-            {
-              path: '/coding/apidemo/get',
-              element: <DisplaySQL />
-            }
-           ] 
           },
           {
             path: '/coding/wordle',
