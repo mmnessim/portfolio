@@ -3,8 +3,7 @@ export const defaultState = {
     user: "Guest",
 }
 
-export const LOGIN = 'LOGIN';
-export const ERROR = 'ERROR';
+//Redux state reducer to manage login state
 
 export function loginReducer(state = defaultState, action) {
     switch (action.type) {
@@ -13,9 +12,6 @@ export function loginReducer(state = defaultState, action) {
             break;
         case 'INCORRECT':
             return action.payload
-            break;
-        case 'ERROR':
-            return state
             break;
         case 'LOGOUT':
             return action.payload
