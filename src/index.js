@@ -18,7 +18,6 @@ import { loginReducer } from './reducer';
 import { Form } from './components/loginArea/form';
 import { MemberContainer } from './components/members/memberContainer';
 import { MusicContainer } from './components/music/musicContainer';
-import { BlogContainer } from './components/blog/blogContainer';
 
 export const store = createStore(loginReducer);
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -32,10 +31,6 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Landing />
-      },
-      {
-        path: '/blog',
-        element: <BlogContainer />
       },
       {
         path: '/about',
