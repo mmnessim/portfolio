@@ -43,3 +43,12 @@ code {
   text-decoration: none;
   color:rgb(2, 2, 71);
 }
+
+.nav-bar {
+  margin: 1rem;
+}
+
+.blog-post {
+  margin-bottom: 3rem;
+  overflow: auto;
+}
